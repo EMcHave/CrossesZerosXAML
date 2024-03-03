@@ -1,0 +1,59 @@
+﻿<Page
+    x:Name="GamePage"
+    x:Class="CrossesZerosXAML.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrossesZerosXAML"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    Loaded="GamePage_Loaded">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop"
+            TintOpacity="0.5" TintLuminosityOpacity="0.9" TintColor="SkyBlue" FallbackColor="SkyBlue" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="130"/>
+        </Grid.RowDefinitions>
+        <Border
+            x:Name="GameBorder"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
+            Margin="10"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            CornerRadius="8"
+            BorderThickness="1"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" 
+            Grid.Row="0">
+            <Grid x:Name="GameGrid" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+        </Border>
+        <TextBlock Text="Game Settings" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TitleLargeTextBlockStyle}"  Margin="0,10,0,0" FontSize="20"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="55" Margin="0,0,0,20">
+            <TextBlock VerticalAlignment="Center" Text="Opponent" Margin="0, -5, 10, 0" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <ComboBox  PlaceholderText="Pick an opponent" x:Name="opponentComboBox"  Margin="10,10, 10, 10" Width="200" SelectedIndex="0">
+                <ComboBoxItem Content="Second player"/>
+                <ComboBoxItem Content="Stupid bot"/>
+                <ComboBoxItem Content="Smarter bot"/>
+                <ComboBoxItem Content="Smartest bot"/>
+            </ComboBox>
+            <TextBlock VerticalAlignment="Center" Text="Field Size" Margin="10, -5, 10, 0" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+            <muxc:NumberBox Value="3" x:Name="GameFieldSizeBox" PlaceholderText="Input field size" Margin="0,10,0,11" Width="70"/>
+            <Button x:Name="BeginButton" Content="Begin" Margin="10,8, 10, 10" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Click="BeginButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
