@@ -44,7 +44,7 @@ namespace CrossesZerosXAML
 
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
         {
-            gameGridSize = MainGrid.ActualWidth * 0.5;
+            gameGridSize = Math.Min(MainGrid.ActualWidth, MainGrid.ActualHeight) * 0.75;
             GameGrid.Width = gameGridSize;
             GameGrid.Height = gameGridSize;
             GameBorder.Height = gameGridSize;
@@ -55,7 +55,7 @@ namespace CrossesZerosXAML
         {
             var rect = sender as Windows.UI.Xaml.Shapes.Rectangle;
             var tag = (CellTag)rect.Tag;
-            ContentDialog dialog = new ContentDialog();
+            
             if (game.Player2 is ConsolePlayer)
                 game.MakeGameStep(tag.x, tag.y);
             else
@@ -132,8 +132,7 @@ namespace CrossesZerosXAML
             GameGrid.ColumnDefinitions.Clear();
             GameGrid.Children.Clear();
 
-            int FieldSize = int.Parse(GameFieldSizeBox.Text);
-            var gameGridSize = MainGrid.ActualWidth * 0.5;
+            int FieldSize = (int)GameFieldSizeBox.Value;
             for (int i = 0; i < FieldSize; i++)
             {
                 RowDefinition row = new RowDefinition();
